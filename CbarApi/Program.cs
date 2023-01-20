@@ -6,10 +6,11 @@ class Program
 {
     static async Task Main()
     {
-        string url = "https://www.cbar.az/currencies/19.01.2023.xml";
+        string url = $"https://www.cbar.az/currencies/{DateTime.Now.Date.ToString("dd.MM.yyyy")}.xml";
+        List<string> valuteCodes = new List<string>() { "USD", "EUR", "RUB", "TRY" };
         ValCurs valCurs;
-        
-        
+
+
         string xmlXesult = await GetAsync(url);
         // Console.WriteLine(xmlXesult);
         XmlSerializer serializer = new XmlSerializer(typeof(ValCurs));
@@ -18,22 +19,33 @@ class Program
             valCurs = (ValCurs)serializer.Deserialize(reader);
         }
 
-        foreach (var valueType in valCurs.ValType )
+        // foreach (var valueType in valCurs.ValType)
+        // {
+        //     Console.WriteLine("#########################################");
+        //     Console.WriteLine(valueType.Type);
+        //     Console.WriteLine("#########################################\n");
+        //
+        //     foreach (var BankMaterial in valueType.Valute)
+        //     {
+        //         Console.WriteLine("Nominal: " + BankMaterial.Nominal);
+        //         Console.WriteLine("Name: " + BankMaterial.Name);
+        //         Console.WriteLine("Value: " + BankMaterial.Value);
+        //
+        //         Console.WriteLine("*****************************************************");
+        //     }
+        // }
+
+        List<Valute> valutes = valCurs.ValType
+            .Where(p => p.Type == "Xarici valyutalar")
+            .FirstOrDefault()
+            .Valute.Where(p => valuteCodes.Contains(p.Code))
+            .ToList();
+        foreach (var valute in valutes)
         {
-            Console.WriteLine("#########################################");
-            Console.WriteLine(valueType.Type);
-            Console.WriteLine("#########################################\n");
-
-            foreach (var BankMaterial in  valueType.Valute)
-            {
-                Console.WriteLine("Nominal: "+BankMaterial.Nominal);
-                Console.WriteLine("Name: "+BankMaterial.Name);
-                Console.WriteLine("Value: "+BankMaterial.Value);
-
-                Console.WriteLine("*****************************************************");
-            }
+            Console.WriteLine("Nominal: " + valute.Nominal);
+            Console.WriteLine("Name: " + valute.Name);
+            Console.WriteLine("Value: " + valute.Value);
         }
-       
     }
 
     public static async Task<string> GetAsync(string uri)
