@@ -10,14 +10,13 @@ class Program
         List<string> valuteCodes = new List<string>() { "USD", "EUR", "RUB", "TRY" };
         ValCurs valCurs;
 
-
-        string xmlXesult = await GetAsync(url);
-        // Console.WriteLine(xmlXesult);
-        XmlSerializer serializer = new XmlSerializer(typeof(ValCurs));
-        using (StringReader reader = new StringReader(xmlXesult))
-        {
-            valCurs = (ValCurs)serializer.Deserialize(reader);
-        }
+        // string xmlXesult = await GetAsync(url);
+        // // Console.WriteLine(xmlXesult);
+        // XmlSerializer serializer = new XmlSerializer(typeof(ValCurs));
+        // using (StringReader reader = new StringReader(xmlXesult))
+        // {
+        //     valCurs = (ValCurs)serializer.Deserialize(reader);
+        // }
 
         // foreach (var valueType in valCurs.ValType)
         // {
@@ -34,17 +33,32 @@ class Program
         //         Console.WriteLine("*****************************************************");
         //     }
         // }
+        string xmlXesult = await GetAsync(url);
+        valCurs = Deseralize(xmlXesult);
 
-        List<Valute> valutes = valCurs.ValType
-            .Where(p => p.Type == "Xarici valyutalar")
-            .FirstOrDefault()
-            .Valute.Where(p => valuteCodes.Contains(p.Code))
-            .ToList();
+        List<Valute> valutes = SelectData(valCurs, valuteCodes);
         foreach (var valute in valutes)
         {
             Console.WriteLine("Nominal: " + valute.Nominal);
             Console.WriteLine("Name: " + valute.Name);
             Console.WriteLine("Value: " + valute.Value);
+        }
+    }
+
+    public static List<Valute> SelectData(ValCurs valCurs, List<string> valuteCodes) => valCurs.ValType
+        .Where(p => p.Type == "Xarici valyutalar")
+        .FirstOrDefault()
+        .Valute.Where(p => valuteCodes.Contains(p.Code))
+        .ToList();
+
+
+    public static ValCurs Deseralize(string xml)
+    {
+        // Console.WriteLine(xmlXesult);
+        XmlSerializer serializer = new XmlSerializer(typeof(ValCurs));
+        using (StringReader reader = new StringReader(xml))
+        {
+            return (ValCurs)serializer.Deserialize(reader);
         }
     }
 
