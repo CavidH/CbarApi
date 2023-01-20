@@ -1,0 +1,15 @@
+C:\Users\javid\source\repos\CbarApi\CbarApi\bin\Debug\net6.0\CbarApi.exe
+C:\Users\javid\source\repos\CbarApi\CbarApi\bin\Debug\net6.0\CbarApi.deps.json
+C:\Users\javid\source\repos\CbarApi\CbarApi\bin\Debug\net6.0\CbarApi.runtimeconfig.json
+C:\Users\javid\source\repos\CbarApi\CbarApi\bin\Debug\net6.0\CbarApi.dll
+C:\Users\javid\source\repos\CbarApi\CbarApi\bin\Debug\net6.0\CbarApi.pdb
+C:\Users\javid\source\repos\CbarApi\CbarApi\obj\Debug\net6.0\CbarApi.csproj.AssemblyReference.cache
+C:\Users\javid\source\repos\CbarApi\CbarApi\obj\Debug\net6.0\CbarApi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\javid\source\repos\CbarApi\CbarApi\obj\Debug\net6.0\CbarApi.AssemblyInfoInputs.cache
+C:\Users\javid\source\repos\CbarApi\CbarApi\obj\Debug\net6.0\CbarApi.AssemblyInfo.cs
+C:\Users\javid\source\repos\CbarApi\CbarApi\obj\Debug\net6.0\CbarApi.csproj.CoreCompileInputs.cache
+C:\Users\javid\source\repos\CbarApi\CbarApi\obj\Debug\net6.0\CbarApi.dll
+C:\Users\javid\source\repos\CbarApi\CbarApi\obj\Debug\net6.0\refint\CbarApi.dll
+C:\Users\javid\source\repos\CbarApi\CbarApi\obj\Debug\net6.0\CbarApi.pdb
+C:\Users\javid\source\repos\CbarApi\CbarApi\obj\Debug\net6.0\CbarApi.genruntimeconfig.cache
+C:\Users\javid\source\repos\CbarApi\CbarApi\obj\Debug\net6.0\ref\CbarApi.dll
